@@ -7,8 +7,8 @@
 #define MADLIB "madlib1.txt"
 #define STORAGE "storage.txt"
 //these are for 2d or normal arrays 
-#define MAXCOL 10
-#define MAXWIDE 20
+#define MAXCOL 10 // Number of rows
+#define MAXWIDE 20 //Number of Columns 
 //these are for files
 #define MAXWIDTH 100
 #define MAXLENGTH 100
@@ -121,24 +121,44 @@ void userIn(FILE* fptr){
 	char userArray[MAXCOL][MAXWIDE]; 
 	for(index1 = 0; index1 < MAXCOL; index1++){ // Used to know what column of the array we are on to print right type of english word
 		if(index1 == 0 || index1 == 2 || index1 == 5 || index1 == 7){
-			for(index2 = 0; index2 < MAXWIDTH ; index2++){
+			for(index2 = 0; userArray[index2] !='\n'; index2++){
 				printf("Please enter an adjective: "); 
 				scanf("%s", userArray[index2]); 
 				fprintf(fptr,"s", userArray[index2]); 
 			}
 		}else if(index1 == 1 || index1 == 6){
-			for(index2 = 0; index2 < MAXWIDTH ; index2++){
-				printf("Please enter a noun: "); 
+			for(index2 = 0; userArray[index2] !='\n'; index2++){
+				printf("Please enter a noun: ");
 				scanf("%s", userArray[index2]); 
 				fprintf(fptr,"s", userArray[index2]); 
 			}
 		}else if(index1 == 3 || index1 == 4 ){
-			for(index2 = 0; index2 < MAXWIDTH; index2++){
+			for(index2 = 0;userArray[index2] !='\n'; index2++){
 			printf("Please enter a verb: "); 
 			scanf("%s", userArray[index2]);
 			fprintf(fptr,"s", userArray[index2]); 
 			}
 		}
+	}
+}
+char switch(FILE* fptr, char text, char userArray[MAXCOL][MAXWIDTH]){ //Should be opened in another read mode fucntion
+//Looking to pass a string into the function
+	int index; 
+	char userArray[MAXCOL][MAXWIDTH];
+	for(index = 0: index < MAXCOL; index++);
+	switch(text){ 
+		case 'A':
+			if(index == 0 || index == 2 || index == 5 \\ index == 7){
+				return userArray[index];
+			}
+		case 'N': 
+			if(index == 1 || index == 6){
+				return userArray[index];
+			}
+		case 'V':
+			if(index == 3 || index == 4){
+				return userArray[index]
+			}
 	}
 }
 	
