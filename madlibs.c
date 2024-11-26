@@ -30,6 +30,9 @@ int main(){
 	//declaring variables
 	char wordStore[MAXWIDE][MAXCOL];
 	FILE* storePtr;
+	FILE* storePtr = fopen(STORAGE, "w"); 
+	userInput(storePtr);
+	fclose(storePtr);
 	
 	//initializing
 	init();
@@ -64,3 +67,34 @@ void display(FILE* fin){
 		printf("\n");
 	}
 }
+void userIn(FILE* fptr){
+	int index1; 
+	int index2; 
+	char userArray[MAXCOL][MAXWIDE]; 
+	for(index1 = 0; index1 < MAXCOL; index1++){ // Used to know what column of the array we are on to print right type of english word
+		if(index1 == 0 || index1 == 2 || index1 == 5 || index1 == 7){
+			for(index2 = 0; index2 < MAXWIDTH ; index2++){
+				printf("Please enter an adjective: "); 
+				fscanf(fptr, "%s", userArray[index2]); 
+			}
+		}else if(index1 == 1 || index1 == 6){
+			for(index2 = 0; index2 < MAXWIDTH ; index2++){
+				printf("Please enter a noun: "); 
+				fscanf(fptr, "%s", userArray[index2]); 
+			}
+		}else if(index1 == 3 || index1 == 4 ){
+			for(index2 = 0; index2 < MAXWIDTH; index2++){
+			printf("Please enter a verb: "); 
+			fscanf(fptr, "%s", userArray[index2]);
+			}
+		}
+	}
+}
+	
+			
+	
+	
+	
+	
+	
+	
