@@ -6,7 +6,7 @@
 //specific file name macros
 #define MADLIB "madlib1.txt"
 #define STORAGE "storage.txt"
-//these are for 2d arrays 
+//these are for 2d or normal arrays 
 #define MAXCOL 10
 #define MAXWIDE 20
 //these are for files
@@ -20,7 +20,7 @@
 //displays chosen file
 void display(FILE* fin);
 //reads a chosen madlib txt file
-char read(FILE* fin);
+void read(FILE* fin);
 //will be called in read() for when the user needs to give a word and will store it in a differnt txt file for later use
 void userIn(char uin, FILE* fin);
 //will be called to "initialize" every file, basically making sure everything is cleared before the main program actually starts
@@ -28,15 +28,18 @@ void init();
 
 int main(){
 	//declaring variables
+	int bytes;
 	char wordStore[MAXWIDE][MAXCOL];
 	FILE* storePtr;
-	storePtr = fopen(STORAGE, "w"); 
-	userInput(storePtr);
-	fclose(storePtr);
 	
 	//initializing
 	init();
+	bytes = 0;
 	//rest of main function
+	
+	storePtr = fopen(STORAGE, "w"); 
+	userInput(storePtr);
+	fclose(storePtr);
 	
 	return 0;
 }
@@ -67,6 +70,51 @@ void display(FILE* fin){
 		printf("\n");
 	}
 }
+
+//other possible userIn + read
+void userIn(char uin, FILE* fin){
+	int x, y, z;
+	char a, b, userIn[MAXWIDE];
+	
+	switch(uin){
+		case 'A':
+			printf("Give me an adjective: ");
+			scanf("%s" userIn);
+			printf("\n");
+			fprintf(fin, "%s\n" userIn);
+		case 'N':
+			printf("Give me a noun: ");
+			scanf("%s" userIn);
+			printf("\n");
+			fprintf(fin, "%s\n" userIn);
+		case 'V':
+			printf("Give me a verb: ");
+			scanf("%s" userIn);
+			printf("\n");
+			fprintf(fin, "%s\n" userIn);
+	}
+	
+}
+
+void read(FILE* fin){
+	int x, y, z;
+	char a, b, string[MAXWIDE];
+	
+	for (y = 1; y <= MAXLENGTH; y++){
+		for (x = 1; x <= MAXWIDTH; x++){
+			if (x % 2 == 0){
+				fscanf("%c ", &a);
+				userIn(a, fin);
+			}
+			else {
+				fgets(string, MAXWIDE, fin);
+			}
+		}
+	}
+	
+}
+
+
 void userIn(FILE* fptr){
 	int index1; 
 	int index2; 
