@@ -34,6 +34,9 @@ int main(){
 	}
 	fclose(madlibFptr); 
 	return 0; 
+	
+	read(FILE* fin, char userArray[rows][columns]){
+	display(char userArray[][columns], FILE* fptr){
 }
 void initalizeFile(){
 	remove(STORAGE);
@@ -73,8 +76,8 @@ void userIn( int columns, char userArray[][columns], int text, int count){
 	}
 }
 <<<<<<< HEAD
-void display(char userArray[rows][columns], FILE* fptr){
-	int x, y, z;
+void display(char userArray[][columns], FILE* fptr){
+	int z;
 	int a;
 	for(y = 1; y <= 22; y++){
 		fscanf(fptr, "%c\n", &a);
