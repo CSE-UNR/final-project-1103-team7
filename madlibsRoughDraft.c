@@ -10,6 +10,7 @@
 #define FILELINENUM 21
 void initalizeFile();
 void userIn(int rows, int columns, char userArray[][columns]);
+void display(char userArray[rows][columns],FILE* fptr);
 int main(){
 	char userArray1[MAXROWS][MAXCOLUMNS];
 	userIn(MAXROWS, MAXCOLUMNS, userArray1);
@@ -73,3 +74,15 @@ void userIn(int columns, char userArray[rows][columns], int text, int count){
 		scanf("%s", userArray[index1]); 
 	}
 }
+void display(char userArray[rows][columns], FILE* fptr){
+	int index1;
+	for(y = 1; y <= 22; y++){
+		fscanf(fin, "%c\n", &a);
+		if (a == 'A' || a == 'V' || a == 'N')[
+			printf("%s", userIn);
+			
+			}
+		else {
+			fgets(string, 100, fptr);
+		}
+	}
