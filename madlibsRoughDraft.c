@@ -42,7 +42,25 @@ int main(){
 void initalizeFile(){
 	remove(STORAGE);
 }
-void userIn(int rows, int columns, char userArray[rows][columns]){
+
+void read(FILE* fin, char userArray[rows][columns]){
+	int x, y, z;
+	int count = 0;
+	char a, b;
+	char string[100];
+	for (y = 1; y <= 22; y++){
+		fscanf(fin, "%c\n", &a);
+		if (a == 'A' || a == 'V' || a == 'N'){
+			userIn(MAXCOLUMNS, userArray, a, count);
+			count++;
+		}
+		else {
+			fgets(string, 100, fin);
+		}
+	}
+}
+
+void userIn(int columns, char userArray[rows][columns], int text, int count){
 	int index1; 
 	for(index1 = 0; index1 < rows; index1++){ // Used to know what column of the array we are on to print right type of english word
 		if(index1 == 0 || index1 == 1){

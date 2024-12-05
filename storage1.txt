@@ -1,8 +1,8 @@
-black
-dog
-fast
-run
-jump
-huge
-boobs
-slimy
+test
+wow
+holy
+moly
+this
+is
+cool
+wow
