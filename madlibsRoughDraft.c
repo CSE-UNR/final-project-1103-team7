@@ -1,17 +1,15 @@
+//Matthew Lewis main and userFunction
 #include <stdio.h>
 #define STORAGE "storage1.txt"
-#define MADLIBS "madlib2.txt"
-#define MAXROWS 8
+#define MADLIBS "madlib1.txt" //This code is structured to run madlib1.txt
+#define MAXROWS 10
 #define MAXCOLUMNS 30
 #define FILEMAXHEIGHT 100 // Used as rows in the 
 #define FILEMAXLENGTH 100 //Useful to find out if the madlibs file is 'awaiting' user input
 #define FILECHARLENGTH 59
-#define FILELINENUM 17 
+#define FILELINENUM 21
 void initalizeFile();
 void userIn(int rows, int columns, char userArray[][columns]);
-void inputStorage(FILE* fptr, int rows, int columns, char userArray[][columns]);
-void displayMadlibs(FILE* fptr,int rows, int cols, char userArray[][cols]);
-char* switchCharacters(int adjIndex, int nounIndex, int verbIndex, char placeholder, char userArray[][MAXCOLUMNS]);
 int main(){
 	char userArray1[MAXROWS][MAXCOLUMNS];
 	userIn(MAXROWS, MAXCOLUMNS, userArray1);
@@ -47,11 +45,11 @@ void initalizeFile(){
 void userIn(int rows, int columns, char userArray[rows][columns]){
 	int index1; 
 	for(index1 = 0; index1 < rows; index1++){ // Used to know what column of the array we are on to print right type of english word
-		if(index1 == 0 || index1 == 2 || index1 == 5 || index1 == 7){
+		if(index1 == 0 || index1 == 1){
 			printf("Please enter an adjective: "); 
-		}else if(index1 == 1 || index1 == 6){
+		}else if(index1 == 2|| index1 == 3 || index1 == 5 || index1 == 6 || index1 == 7 || index1 == 8 || index1 == 9){
 			printf("Please enter a noun: ");
-		}else if(index1 == 3 || index1 == 4 ){
+		}else if(index1 == 4 ){
 			printf("Please enter a verb: "); 
 		}
 		scanf("%s", userArray[index1]); 
