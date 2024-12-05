@@ -77,8 +77,8 @@ void userIn( int columns, char userArray[][columns], int text, int count){
 }
 <<<<<<< HEAD
 void display(char userArray[][columns], FILE* fptr){
-	int z;
-	int a;
+	char z;
+	char a;
 	for(y = 1; y <= 22; y++){
 		fscanf(fptr, "%c\n", &a);
 		if (a != 'A' || a != 'V' || a != 'N'){
