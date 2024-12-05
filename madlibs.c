@@ -141,7 +141,7 @@ void userIn(FILE* fptr){
 		}
 	}
 }
-char switch(FILE* fptr, char text, char userArray[MAXCOL][MAXWIDTH]){ //Should be opened in another read mode fucntion
+char switch(FILE* fptr, char text, char userArray[][MAXWIDTH]){ //Should be opened in another read mode fucntion
 //Looking to pass a string into the function
 	int index; 
 	char userArray[MAXCOL][MAXWIDTH];
