@@ -8,40 +8,27 @@
 #define FILEMAXLENGTH 100 //Useful to find out if the madlibs file is 'awaiting' user input
 #define FILECHARLENGTH 59
 #define FILELINENUM 21
-void initalizeFile();
 void userIn(int rows, int columns, char userArray[][columns]);
 void display(char userArray[rows][columns],FILE* fptr);
 int main(){
 	char userArray1[MAXROWS][MAXCOLUMNS];
-	userIn(MAXROWS, MAXCOLUMNS, userArray1);
 	FILE* madlibfptr; 
-	madLibFptr = fopen(MADLIB,"r"); //Opening Initalization function
+	madLibFptr = fopen(MADLIB,"r"); //Opening madlib for read function
 	if(fptr == NULL){
 		printf("File couldn't open correctly\n"); 
 		return 0;
 	}
+	read(madlibFptr, char userArray[rows][columns]);
 	fclose(madlibFptr);
 	madlibFptr = fopen(MADLIBS, "r"); 
 	if(madLibFptr == NULL){
 		printf("File couldn't open correctly\n"); 
 		return 0;
 	}
+	display(char userArray[][columns], madLibFptr);
 	fclose(fptr1); 
-	fptr2 = fopen(MADLIBS, "r");
-	if(madLibFptr == NULL){
-		printf("File couldn't open correctly\n"); 
-		return 0;
-	}
-	fclose(madlibFptr); 
 	return 0; 
-	
-	read(FILE* fin, char userArray[rows][columns]){
-	display(char userArray[][columns], FILE* fptr){
 }
-void initalizeFile(){
-	remove(STORAGE);
-}
-
 void read(FILE* fin, char userArray[rows][columns]){
 	int x, y, z;
 	int count = 0;
@@ -75,7 +62,6 @@ void userIn( int columns, char userArray[][columns], int text, int count){
 			break;
 	}
 }
-<<<<<<< HEAD
 void display(char userArray[][columns], FILE* fptr){
 	char z;
 	char a;
@@ -90,6 +76,4 @@ void display(char userArray[][columns], FILE* fptr){
 		fgets(string, 100, fptr);
 		}
 	}
-=======
 
->>>>>>> a1817530ef30c247aade6aaf53558bce4c28246d
