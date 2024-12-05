@@ -13,27 +13,25 @@ void userIn(int rows, int columns, char userArray[][columns]);
 int main(){
 	char userArray1[MAXROWS][MAXCOLUMNS];
 	userIn(MAXROWS, MAXCOLUMNS, userArray1);
-	FILE* fptr; 
-	fptr = fopen(MADLIB,"w"); //Opening Initalization function
+	FILE* madlibfptr; 
+	madLibFptr = fopen(MADLIB,"r"); //Opening Initalization function
 	if(fptr == NULL){
 		printf("File couldn't open correctly\n"); 
 		return 0;
 	}
-	fclose(fptr);
-	fptr1 = fopen(STORAGE, "w"); 
-	if(fptr1 == NULL){
+	fclose(madlibFptr);
+	madlibFptr = fopen(MADLIBS, "r"); 
+	if(madLibFptr == NULL){
 		printf("File couldn't open correctly\n"); 
 		return 0;
 	}
-	inputStorage(fptr1, MAXROWS, MAXCOLUMNS, userArray1);
 	fclose(fptr1); 
 	fptr2 = fopen(MADLIBS, "r");
-	if(fptr2 == NULL){
+	if(madLibFptr == NULL){
 		printf("File couldn't open correctly\n"); 
 		return 0;
 	}
-	displayMadlibs(fptr2, MAXROWS, MAXCOLUMNS, userArray1);
-	fclose(fptr2); 
+	fclose(madlibFptr); 
 	return 0; 
 }
 void initalizeFile(){
