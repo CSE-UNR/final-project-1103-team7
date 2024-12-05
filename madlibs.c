@@ -8,7 +8,7 @@
 #define STORAGE "storage.txt"
 //these are for 2d or normal arrays 
 #define MAXCOL 10 // Number of rows
-#define MAXWIDE 20 //Number of Columns 
+#define MAXWIDE 70 //Number of Columns 
 //these are for files
 #define MAXWIDTH 100
 #define MAXLENGTH 100
@@ -20,7 +20,7 @@
 //displays chosen file
 void display(FILE* fin);
 //reads a chosen madlib txt file
-void read(FILE* fin);
+char read(FILE* fin);
 //will be called in read() for when the user needs to give a word and will store it in a differnt txt file for later use
 void userIn(char uin, FILE* fin);
 //will be called to "initialize" every file, basically making sure everything is cleared before the main program actually starts
@@ -71,47 +71,20 @@ void display(FILE* fin){
 	}
 }
 
-//other possible userIn + read
-void userIn(char uin, FILE* fin){
-	int x, y, z;
-	char a, b, userIn[MAXWIDE];
-	
-	switch(uin){
-		case 'A':
-			printf("Give me an adjective: ");
-			scanf("%s" userIn);
-			printf("\n");
-			fprintf(fin, "%s\n" userIn);
-		case 'N':
-			printf("Give me a noun: ");
-			scanf("%s" userIn);
-			printf("\n");
-			fprintf(fin, "%s\n" userIn);
-		case 'V':
-			printf("Give me a verb: ");
-			scanf("%s" userIn);
-			printf("\n");
-			fprintf(fin, "%s\n" userIn);
-	}
-	
-}
-
-void read(FILE* fin){
+char read(FILE* fin){
 	int x, y, z;
 	char a, b, string[MAXWIDE];
 	
 	for (y = 1; y <= MAXLENGTH; y++){
-		for (x = 1; x <= MAXWIDTH; x++){
-			if (x % 2 == 0){
-				fscanf("%c ", &a);
-				userIn(a, fin);
-			}
-			else {
-				fgets(string, MAXWIDE, fin);
-			}
+		if (y % 2 == 0){
+			fscanf("%c ", &a);
+		}
+		else {
+			fgets(string, 67, fin);
 		}
 	}
 	
+	return a;
 }
 
 
@@ -148,7 +121,7 @@ char switch(FILE* fptr, char text, char userArray[][MAXWIDTH]){ //Should be open
 	for(index = 0: index < MAXCOL; index++);
 	switch(text){ 
 		case 'A':
-			if(index == 0 || index == 2 || index == 5 \\ index == 7){
+			if(index == 0 || index == 2 || index == 5 || index == 7){
 				return userArray[index];
 			}
 		case 'N': 
