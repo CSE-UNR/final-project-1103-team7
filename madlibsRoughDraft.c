@@ -15,10 +15,7 @@ int main(){
 	char userArray1[MAXROWS][MAXCOLUMNS];
 	userIn(MAXROWS, MAXCOLUMNS, userArray1);
 	FILE* fptr; 
-	FILE* fptr1; 
-	FILE* fptr2;
-	initalizeFile(); 
-	fptr = fopen(STORAGE,"w"); //Opening Initalization function
+	fptr = fopen(MADLIB,"w"); //Opening Initalization function
 	if(fptr == NULL){
 		printf("File couldn't open correctly\n"); 
 		return 0;
@@ -61,28 +58,37 @@ void read(FILE* fin, char userArray[rows][columns]){
 	}
 }
 
-void userIn(int columns, char userArray[rows][columns], int text, int count){
-	int index1; 
-	for(index1 = 0; index1 < rows; index1++){ // Used to know what column of the array we are on to print right type of english word
-		if(index1 == 0 || index1 == 1){
-			printf("Please enter an adjective: "); 
-		}else if(index1 == 2|| index1 == 3 || index1 == 5 || index1 == 6 || index1 == 7 || index1 == 8 || index1 == 9){
-			printf("Please enter a noun: ");
-		}else if(index1 == 4 ){
-			printf("Please enter a verb: "); 
-		}
-		scanf("%s", userArray[index1]); 
+void userIn( int columns, char userArray[][columns], int text, int count){
+	switch(text){
+		case 'A':
+			printf("Enter an adjective: "); 
+			scanf("%s", userArray[count];
+			break;
+		case 'N':
+			printf("Enter a noun: "); 
+			scanf("%s", userArray[count];
+			break;
+		case 'V':
+			printf("Enter a verb: "); 
+			scanf("%s", userArray[count];
+			break;
 	}
 }
+<<<<<<< HEAD
 void display(char userArray[rows][columns], FILE* fptr){
-	int index1;
+	int x, y, z;
+	int a;
 	for(y = 1; y <= 22; y++){
-		fscanf(fin, "%c\n", &a);
-		if (a == 'A' || a == 'V' || a == 'N')[
-			printf("%s", userIn);
-			
+		fscanf(fptr, "%c\n", &a);
+		if (a != 'A' || a != 'V' || a != 'N'){
+			printf("%c", a);
 			}
-		else {
-			fgets(string, 100, fptr);
+		else (a == 'A' || a == 'V' || a == 'N'){
+			printf("%s", userIn);
+			}
+		fgets(string, 100, fptr);
 		}
 	}
+=======
+
+>>>>>>> a1817530ef30c247aade6aaf53558bce4c28246d
