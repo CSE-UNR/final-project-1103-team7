@@ -13,7 +13,11 @@
 void userIn(int columns, char userArray[MAXROWS][MAXCOLUMNS], int text, int count);
 void display(char userArray[MAXROWS][MAXCOLUMNS], FILE* fptr);
 void reads(FILE* fin, char userArray[MAXROWS][MAXCOLUMNS]);
+int characterCheck(char letter);
+void endProgram(char* endReponse);
 int main(){
+	char e; 
+	do{
 	char userArray1[MAXROWS][MAXCOLUMNS];
 	FILE* madlibfptr; 
 	madlibfptr = fopen(MADLIBS,"r"); //Opening madlib for read function
@@ -31,6 +35,8 @@ int main(){
 	}
 	display(userArray1, madlibfptr);
 	fclose(madlibfptr); 
+	endProgram(&e);
+	}while(e == 'Y' || e == 'y');
 	return 0; 
 }
 void reads(FILE* fin, char userArray[MAXROWS][MAXCOLUMNS]){
@@ -40,7 +46,7 @@ void reads(FILE* fin, char userArray[MAXROWS][MAXCOLUMNS]){
 	char string[100];
 	for (y = 1; y <= 22; y++){
 		fscanf(fin, "%c\n", &a);
-		if (a == 'A' || a == 'V' || a == 'N'){
+		if (characterCheck(a)){
 			userIn(MAXCOLUMNS, userArray, a, count);
 			count++;
 		}
@@ -74,7 +80,7 @@ void display(char userArray[MAXROWS][MAXCOLUMNS], FILE* fptr){
 	for(y = 1; y <= FILELINENUM; y++){
 		for (x = 1; x <= FILECHARLENGTH; x++){
 			fscanf(fptr, "%c", &a);
-			if (a == 'A' || a == 'V' || a == 'N'){
+			if (characterCheck(a)){
 				printf(" %s", userArray[count]);
 				count++;
 			}
@@ -90,5 +96,11 @@ void display(char userArray[MAXROWS][MAXCOLUMNS], FILE* fptr){
 	}
 	printf("\n");
 }
-
+int characterCheck(char letter){ //Created as this check of letters was used twice 1 in read function and 1 in display function
+	return letter == 'A' || letter == 'V' || letter == 'N';  
+}
+void endProgram(char* endResponse){ // I used pass by address to return global copy of the users end response to bottom of main function
+	printf("Play again? Y or N\n");
+	scanf(" %c", endResponse); 
+}
 	
