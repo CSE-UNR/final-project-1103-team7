@@ -82,7 +82,7 @@ void display(char userArray[MAXROWS][MAXCOLUMNS], FILE* fptr){
 				else if (a == '\n'){
 					printf(" ");
 				}
-		}
+			}
 		}
 	}
 	printf("\n");
