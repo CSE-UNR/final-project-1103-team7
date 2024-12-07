@@ -1,4 +1,6 @@
-//Matthew Lewis Tristian Pulsipher Emma Comer main and userFunction
+//Matthew Lewis Tristian Pulsipher Emma Comer 
+//Final Project
+//12.7.24
 #include <stdio.h>
 #define STORAGE "storage1.txt"
 #define MADLIBS "madlib1.txt" //This code is structured to run madlib1.txt
@@ -11,7 +13,6 @@
 void userIn(int columns, char userArray[MAXROWS][MAXCOLUMNS], int text, int count);
 void display(char userArray[MAXROWS][MAXCOLUMNS], FILE* fptr);
 void reads(FILE* fin, char userArray[MAXROWS][MAXCOLUMNS]);
-void typeUserIn(int text1, int count1, char userArray[MAXROWS][MAXCOLUMNS]);
 int main(){
 	char userArray1[MAXROWS][MAXCOLUMNS];
 	FILE* madlibfptr; 
@@ -51,7 +52,20 @@ void reads(FILE* fin, char userArray[MAXROWS][MAXCOLUMNS]){
 }
 
 void userIn(int columns, char userArray[MAXROWS][MAXCOLUMNS], int text, int count){
-	typeUserIn(text, count, userArray);
+	switch(text){
+		case 'A':
+			printf("Enter an adjective: "); 
+			scanf("%s", userArray[count]);
+			break;
+		case 'N':
+			printf("Enter a noun: "); 
+			scanf("%s", userArray[count]);
+			break;
+		case 'V':
+			printf("Enter a verb: "); 
+			scanf("%s", userArray[count]);
+			break;
+	}
 }
 void display(char userArray[MAXROWS][MAXCOLUMNS], FILE* fptr){
 	char y, x;
@@ -76,19 +90,5 @@ void display(char userArray[MAXROWS][MAXCOLUMNS], FILE* fptr){
 	}
 	printf("\n");
 }
-void typeUserIn(int text1, int count1, char userArray[MAXROWS][MAXCOLUMNS]){
-	switch(text1){
-		case 'A':
-			printf("Enter an adjective: "); 
-			scanf("%s", userArray[count1]);
-			break;
-		case 'N':
-			printf("Enter a noun: "); 
-			scanf("%s", userArray[count1]);
-			break;
-		case 'V':
-			printf("Enter a verb: "); 
-			scanf("%s", userArray[count1]);
-			break;
-	}
-}
+
+	
