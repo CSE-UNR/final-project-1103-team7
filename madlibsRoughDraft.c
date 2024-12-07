@@ -6,30 +6,31 @@
 #define MAXCOLUMNS 30
 #define FILEMAXHEIGHT 100 // Used as rows in the 
 #define FILEMAXLENGTH 100 //Useful to find out if the madlibs file is 'awaiting' user input
-#define FILECHARLENGTH 59
-#define FILELINENUM 21
-void userIn(int rows, int columns, char userArray[][columns]);
-void display(char userArray[rows][columns],FILE* fptr);
+#define FILECHARLENGTH 70
+#define FILELINENUM 25
+void userIn(int columns, char userArray[MAXROWS][MAXCOLUMNS], int text, int count);
+void display(char userArray[MAXROWS][MAXCOLUMNS], FILE* fptr);
+void reads(FILE* fin, char userArray[MAXROWS][MAXCOLUMNS]);
 int main(){
 	char userArray1[MAXROWS][MAXCOLUMNS];
 	FILE* madlibfptr; 
-	madLibFptr = fopen(MADLIB,"r"); //Opening madlib for read function
-	if(fptr == NULL){
+	madlibfptr = fopen(MADLIBS,"r"); //Opening madlib for read function
+	if(madlibfptr == NULL){
 		printf("File couldn't open correctly\n"); 
 		return 0;
 	}
-	read(madlibFptr, char userArray[rows][columns]);
-	fclose(madlibFptr);
-	madlibFptr = fopen(MADLIBS, "r"); 
-	if(madLibFptr == NULL){
+	reads(madlibfptr, userArray1);
+	fclose(madlibfptr);
+	madlibfptr = fopen(MADLIBS, "r"); 
+	if(madlibfptr == NULL){
 		printf("File couldn't open correctly\n"); 
 		return 0;
 	}
-	display(char userArray[][columns], madLibFptr);
-	fclose(fptr1); 
+	display(userArray1, madlibfptr);
+	fclose(madlibfptr); 
 	return 0; 
 }
-void read(FILE* fin, char userArray[rows][columns]){
+void reads(FILE* fin, char userArray[MAXROWS][MAXCOLUMNS]){
 	int x, y, z;
 	int count = 0;
 	char a, b;
@@ -44,36 +45,46 @@ void read(FILE* fin, char userArray[rows][columns]){
 			fgets(string, 100, fin);
 		}
 	}
+	printf("\n");
 }
 
-void userIn( int columns, char userArray[][columns], int text, int count){
+void userIn(int columns, char userArray[MAXROWS][MAXCOLUMNS], int text, int count){
 	switch(text){
 		case 'A':
 			printf("Enter an adjective: "); 
-			scanf("%s", userArray[count];
+			scanf("%s", userArray[count]);
 			break;
 		case 'N':
 			printf("Enter a noun: "); 
-			scanf("%s", userArray[count];
+			scanf("%s", userArray[count]);
 			break;
 		case 'V':
 			printf("Enter a verb: "); 
-			scanf("%s", userArray[count];
+			scanf("%s", userArray[count]);
 			break;
 	}
 }
-void display(char userArray[][columns], FILE* fptr){
-	char z;
-	char a;
-	for(y = 1; y <= 22; y++){
-		fscanf(fptr, "%c\n", &a);
-		if (a != 'A' || a != 'V' || a != 'N'){
-			printf("%c", a);
+void display(char userArray[MAXROWS][MAXCOLUMNS], FILE* fptr){
+	char y, x;
+	char a, string[100];
+	int count = 0;
+	for(y = 1; y <= FILELINENUM; y++){
+		for (x = 1; x <= FILECHARLENGTH; x++){
+			fscanf(fptr, "%c", &a);
+			if (a == 'A' || a == 'V' || a == 'N'){
+				printf(" %s", userArray[count]);
+				count++;
 			}
-		else (a == 'A' || a == 'V' || a == 'N'){
-			printf("%s", userIn);
-			}
-		fgets(string, 100, fptr);
+			else {
+				if (a != '\n'){
+					printf("%c", a);
+				}
+				else if (a == '\n'){
+					printf(" ");
+				}
+		}
 		}
 	}
+	printf("\n");
+}
 
