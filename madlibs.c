@@ -2,9 +2,8 @@
 //Final Project
 //12.7.24
 #include <stdio.h>
-#define STORAGE "storage1.txt"
 #define MADLIBS "madlib1.txt" //This code is structured to run madlib1.txt
-#define MAXROWS 10
+#define MAXROWS 20
 #define MAXCOLUMNS 30
 #define FILEMAXHEIGHT 100 // Used as rows in the 
 #define FILEMAXLENGTH 100 //Useful to find out if the madlibs file is 'awaiting' user input
@@ -14,7 +13,7 @@ void userIn(int columns, char userArray[MAXROWS][MAXCOLUMNS], int text, int coun
 void display(char userArray[MAXROWS][MAXCOLUMNS], FILE* fptr);
 void reads(FILE* fin, char userArray[MAXROWS][MAXCOLUMNS]);
 int characterCheck(char letter);
-void endProgram(char* endReponse);
+char endProgram();
 int main(){
 	char e; 
 	do{
@@ -35,7 +34,7 @@ int main(){
 	}
 	display(userArray1, madlibfptr);
 	fclose(madlibfptr); 
-	endProgram(&e);
+	e = endProgram();
 	}while(e == 'Y' || e == 'y');
 	return 0; 
 }
@@ -74,14 +73,15 @@ void userIn(int columns, char userArray[MAXROWS][MAXCOLUMNS], int text, int coun
 	}
 }
 void display(char userArray[MAXROWS][MAXCOLUMNS], FILE* fptr){
-	char y, x;
+	int y, x;
+	int z = 0;
 	char a, string[100];
 	int count = 0;
 	for(y = 1; y <= FILELINENUM; y++){
 		for (x = 1; x <= FILECHARLENGTH; x++){
 			fscanf(fptr, "%c", &a);
 			if (characterCheck(a)){
-				printf(" %s", userArray[count]);
+				printf("%s", userArray[count]);
 				count++;
 			}
 			else {
@@ -89,18 +89,29 @@ void display(char userArray[MAXROWS][MAXCOLUMNS], FILE* fptr){
 					printf("%c", a);
 				}
 				else if (a == '\n'){
-					printf(" ");
+					if (z > 30){
+						y = (FILELINENUM+1);
+					}
+					else {
+						printf(" ");
+						z++;
+					}
 				}
 			}
 		}
 	}
-	printf("\n");
+	printf("\n\n");
 }
+
 int characterCheck(char letter){ //Created as this check of letters was used twice 1 in read function and 1 in display function
 	return letter == 'A' || letter == 'V' || letter == 'N';  
 }
-void endProgram(char* endResponse){ // I used pass by address to return global copy of the users end response to bottom of main function
+
+char endProgram(){ // I used pass by address to return global copy of the users end response to bottom of main function
+	char endResponse;
 	printf("Play again? Y or N\n");
 	scanf(" %c", endResponse); 
+	
+	return endResponse;
 }
 	
