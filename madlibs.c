@@ -103,11 +103,11 @@ void display(char userArray[MAXROWS][MAXCOLUMNS], FILE* fptr){
 	printf("\n\n");
 }
 
-int characterCheck(char letter){ //Created as this check of letters was used twice 1 in read function and 1 in display function
+int characterCheck(char letter){ //Created as this check of letters as what it returns was used twice 1 in read function and 1 in display function
 	return letter == 'A' || letter == 'V' || letter == 'N';  
 }
 
-char endProgram(){ // I used pass by address to return global copy of the users end response to bottom of main function
+char endProgram(){ // function used to prompt user if they'd like to play again
 	char endResponse;
 	printf("Play again? Y or N\n");
 	scanf(" %c", endResponse); 
